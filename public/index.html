@@ -17,6 +17,7 @@
         var socket = io.connect(window.location.origin);
 
         socket.on('votes', function(votes){
+            console.log(votes);
             $('#votes').html("OUI " + votes.yes + " vs " + votes.no + " NON");
         });
     </script>

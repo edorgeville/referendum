@@ -10,6 +10,7 @@ npm start
 ### Endpoints
 - ```GET /``` :  page d'accueil
 - ```POST /sms``` : utilisée par Twilio pour les SMS reçus
+- ```GET /triche/oui``` et ```GET /triche/non``` : pour faire de la fraude électorale  
 
 ### Développement Twilio local
 Créer un fichier ```.env``` et remplir de la façon suivante : 

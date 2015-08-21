@@ -47,6 +47,16 @@ app.post('/sms', function(req, res){
 
 });
 
+app.get('/triche/oui', function(req, res){
+    vote(null, 'yes');
+    res.send("That's it mon gars, c'est d'même qu'on va l'avouèr notre pays. V'la un hot dog gratiss'.");
+});
+
+app.get('/triche/non', function(req, res){
+    vote(null, 'no');
+    res.send("Fraude électorale effectuée avec succès. Confirmation de dépôt de pôt-de-vin #" + Math.floor(Math.random()*100000000000) + "-" + Math.floor(Math.random()*1000) + ".");
+});
+
 app.set('port', (process.env.PORT || 1337));
 
 var server = app.listen(app.get('port'), function () {
@@ -68,14 +78,16 @@ function numberVoted(number){
 }
 
 function vote(number, answer){
-    if(answer == 'yes'){
-        sms.send(number, 'Vous avez voté pour l\'indépendence du Québec.');
-    }
-    else if(answer == 'no'){
-        sms.send(number, 'Vous avez voté contre l\'indépendence du Québec.');
-    }
-    else{
-        return 1;
+    if(number){
+        if(answer == 'yes'){
+            sms.send(number, 'Vous avez voté pour l\'indépendence du Québec.');
+        }
+        else if(answer == 'no'){
+            sms.send(number, 'Vous avez voté contre l\'indépendence du Québec.');
+        }
+        else{
+            return 1;
+        }
     }
     votes[answer]++;
     numbers.push(number);
