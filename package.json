@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Erwan d'Orgeville <info@erwandorgeville.com> (http://erwandorgeville.com)",
@@ -14,5 +15,9 @@
     "body-parser": "^1.13.3",
     "express": "^4.13.3",
     "twilio": "^2.3.0"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/MIUQAM/urbania-referendum"
   }
 }

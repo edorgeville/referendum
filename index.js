@@ -47,7 +47,7 @@ app.post('/sms', function(req, res){
 
 });
 
-var server = app.listen(1337, function () {
+var server = app.listen(process.env.PORT || 1337, function () {
     var host = server.address().address;
     var port = server.address().port;
 
