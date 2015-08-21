@@ -17,7 +17,7 @@
         var socket = io.connect(window.location.origin);
 
         socket.on('votes', function(votes){
-            $('#votes').html("OUI " + votes.yes + " vs " + votes.no + " NO");
+            $('#votes').html("OUI " + votes.yes + " vs " + votes.no + " NON");
         });
     </script>
 </body>
