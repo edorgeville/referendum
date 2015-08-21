@@ -47,15 +47,17 @@ app.post('/sms', function(req, res){
 
 });
 
-app.get('/triche/oui', function(req, res){
-    vote(null, 'yes');
-    res.send("That's it mon gars, c'est d'même qu'on va l'avouèr notre pays. V'la un hot dog gratiss'.");
-});
+if(process.env.CHEAT == "TRUE"){
+    app.get('/triche/oui', function(req, res){
+        vote(null, 'yes');
+        res.send("That's it mon gars, c'est d'même qu'on va l'avouèr notre pays. V'la un hot dog gratiss'.");
+    });
 
-app.get('/triche/non', function(req, res){
-    vote(null, 'no');
-    res.send("Fraude électorale effectuée avec succès. Confirmation de dépôt de pôt-de-vin #" + Math.floor(Math.random()*100000000000) + "-" + Math.floor(Math.random()*1000) + ".");
-});
+    app.get('/triche/non', function(req, res){
+        vote(null, 'no');
+        res.send("Fraude électorale effectuée avec succès. Confirmation de dépôt de pôt-de-vin #" + Math.floor(Math.random()*100000000000) + "-" + Math.floor(Math.random()*1000) + ".");
+    });
+}
 
 app.set('port', (process.env.PORT || 1337));
 
