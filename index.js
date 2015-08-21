@@ -95,10 +95,10 @@ function vote(number, answer){
     }
     votes[answer]++;
     if(number){
-        numbers.push("xxx-xxx-" + number.substr(number.length - 3));
+        numbers.push("xxx-xxx-" + number.substr(number.length - 4));
     }
     else{
-        numbers.push("xxx-xxx-xxx");
+        numbers.push("xxx-xxx-xxxx");
     }
 
     io.emit('votes', votes);
