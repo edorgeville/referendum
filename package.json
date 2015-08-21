@@ -14,10 +14,11 @@
   "dependencies": {
     "body-parser": "^1.13.3",
     "express": "^4.13.3",
+    "socket.io": "^1.3.6",
     "twilio": "^2.3.0"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/MIUQAM/urbania-referendum"
+    "type": "git",
+    "url": "https://github.com/MIUQAM/urbania-referendum"
   }
 }

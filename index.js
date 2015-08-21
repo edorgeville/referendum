@@ -47,12 +47,21 @@ app.post('/sms', function(req, res){
 
 });
 
-var server = app.listen(process.env.PORT || 1337, function () {
-    var host = server.address().address;
-    var port = server.address().port;
+app.set('port', (process.env.PORT || 1337));
 
-    console.log('Example app listening at http://%s:%s', host, port);
+var server = app.listen(app.get('port'), function () {
+    console.log('Node app is running on port', app.get('port'));
 });
+
+var io = require('socket.io')(server);
+
+io.on('connection', function (socket) {
+    socket.emit('votes', votes);
+});
+
+
+
+
 
 function numberVoted(number){
     return (numbers.indexOf(number) > -1);
@@ -70,4 +79,6 @@ function vote(number, answer){
     }
     votes[answer]++;
     numbers.push(number);
+
+    io.emit('votes', votes);
 }

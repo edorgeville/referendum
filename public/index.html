@@ -1,1 +1,24 @@
-Hello world!
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Urbania : Referendum !</title>
+    <link rel="stylesheet" href="">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <p id="votes">
+        
+    </p>
+
+    <script>
+        var socket = io.connect(window.location.origin);
+
+        socket.on('votes', function(votes){
+            $('#votes').html("OUI " + votes.yes + " vs " + votes.no + " NO");
+        });
+    </script>
+</body>
+</html>
