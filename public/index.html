@@ -12,6 +12,9 @@
     <p>
         Envoyez OUI ou NON au numéro suivant : <span id="number">undefined</span>
     </p>
+    <p>
+        <img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=sms:" alt="" id="qr">
+    </p>
     <p id="votes">
         
     </p>
@@ -32,6 +35,7 @@
 
         socket.on('number', function(number){
             $('#number').html(number);
+            $('#qr').attr('src', "http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=sms:" + number.replace('+', ''));
         });
 
         socket.on('numbers', function(numbers){
