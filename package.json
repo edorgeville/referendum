@@ -1,0 +1,18 @@
+{
+  "name": "referendum",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Erwan d'Orgeville <info@erwandorgeville.com> (http://erwandorgeville.com)",
+  "devDependencies": {
+    "dotenv": "^1.2.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "twilio": "^2.3.0"
+  }
+}
