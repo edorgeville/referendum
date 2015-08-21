@@ -9,8 +9,17 @@
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
+    <p>
+        Envoyez OUI ou NON au numéro suivant : <span id="number">undefined</span>
+    </p>
     <p id="votes">
         
+    </p>
+    <p>
+        Voters numbers : 
+        <ul id="numbers">
+            
+        </ul>
     </p>
 
     <script>
@@ -20,6 +29,18 @@
             console.log(votes);
             $('#votes').html("OUI " + votes.yes + " vs " + votes.no + " NON");
         });
+
+        socket.on('number', function(number){
+            $('#number').html(number);
+        });
+
+        socket.on('numbers', function(numbers){
+            var html = "";
+            $.each(numbers, function(i, number){
+                html += "<li>" + number + "</li>";
+            });
+            $('#numbers').html(html);
+        })
     </script>
 </body>
 </html>

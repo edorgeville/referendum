@@ -69,6 +69,8 @@ var io = require('socket.io')(server);
 
 io.on('connection', function (socket) {
     socket.emit('votes', votes);
+    socket.emit('number', process.env.TWILIO_NUMBER);
+    io.emit('numbers', numbers);
 });
 
 
@@ -92,7 +94,13 @@ function vote(number, answer){
         }
     }
     votes[answer]++;
-    numbers.push(number);
+    if(number){
+        numbers.push("xxx-xxx-" + number.substr(number.length - 3));
+    }
+    else{
+        numbers.push("xxx-xxx-xxx");
+    }
 
     io.emit('votes', votes);
+    io.emit('numbers', numbers);
 }
