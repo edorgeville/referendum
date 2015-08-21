@@ -13,6 +13,7 @@ var votes = {
 };
 
 var numbers = [];
+var censoredNumbers = [];
 
 app.use(express.static('public'));
 
@@ -95,12 +96,13 @@ function vote(number, answer){
     }
     votes[answer]++;
     if(number){
-        numbers.push("xxx-xxx-" + number.substr(number.length - 4));
+        numbers.push(number);
+        censoredNumbers.push("xxx-xxx-" + number.substr(number.length - 4));
     }
     else{
-        numbers.push("xxx-xxx-xxxx");
+        censoredNumbers.push("xxx-xxx-xxxx");
     }
 
     io.emit('votes', votes);
-    io.emit('numbers', numbers);
+    io.emit('numbers', censoredNumbers);
 }
