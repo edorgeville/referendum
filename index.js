@@ -100,7 +100,7 @@ function vote(number, answer){
 
     if(number){
         if(answer == 'yes'){
-            sms.send(number, 'Vous avez voté oui. Score: OUI ' + getScore());
+            sms.send(number, 'Vous avez voté oui. ' + getScore());
         }
         else if(answer == 'no'){
             sms.send(number, 'Vous avez voté non. ' + getScore());
