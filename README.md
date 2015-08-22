@@ -9,7 +9,7 @@ npm start
 
 ### Endpoints
 - ```GET /``` :  page d'accueil
-- ```POST /sms``` : utilisée par Twilio pour les SMS reçus
+- ```POST /sms``` : utilisée par Twilio pour les SMS reçus. Commandes possibles : ```OUI```, ```NON```, ```SCORE```
 - ```GET /triche/oui``` et ```GET /triche/non``` : pour faire de la fraude électorale  
 
 ### Développement Twilio local

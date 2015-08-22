@@ -26,17 +26,23 @@ app.post('/sms', function(req, res){
     var answer = message.Body.toLowerCase();
     var voter = message.From;
 
-    if(numberVoted(voter)) {
-        sms.send(voter, 'Désolé, vous avez déjà voté.')
+    if(answer == 'oui' || answer == 'non'){
+        if(numberVoted(voter)) {
+            sms.send(voter, 'Désolé, vous avez déjà voté.')
+        }
+        else{
+            if(answer == 'oui'){
+                vote(voter, 'yes');
+            }else if (answer == 'non'){
+                vote(voter, 'no');
+            }
+        }
+    }
+    else if(answer == 'score'){
+        sms.send(voter, getScore());
     }
     else{
-        if(answer == 'oui'){
-            vote(voter, 'yes');
-        }else if (answer == 'non'){
-            vote(voter, 'no');
-        }else{
-            sms.send(voter, 'Désolé, je n\'ai pas bien compris. Veuillez envoyer OUI ou NON pour voter.');
-        }
+        sms.send(voter, 'Désolé, je n\'ai pas bien compris. Possible : OUI, NON, SCORE');
     }
 
     //Create TwiML response
@@ -94,10 +100,10 @@ function vote(number, answer){
 
     if(number){
         if(answer == 'yes'){
-            sms.send(number, 'Vous avez voté oui. Score: OUI ' + percentages.yes + '% vs. NON ' + percentages.no + '%');
+            sms.send(number, 'Vous avez voté oui. Score: OUI ' + getScore());
         }
         else if(answer == 'no'){
-            sms.send(number, 'Vous avez voté non. Score: OUI ' + percentages.yes + '% vs. NON ' + percentages.no + '%');
+            sms.send(number, 'Vous avez voté non. ' + getScore());
         }
         else{
             return 1;
@@ -127,4 +133,9 @@ function getPercentages(){
         yes: pY,
         no: pN
     }
+}
+
+function getScore(){
+    var percentages = getPercentages();
+    return 'Score: OUI ' + percentages.yes + '% vs. NON ' + percentages.no + '%';
 }
