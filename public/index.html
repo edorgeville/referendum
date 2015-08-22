@@ -9,28 +9,30 @@
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
-    <div class="map-container">
-        <div class="map">
-            <div class="no"></div>
-            <div class="yes"></div>
+    <div class="container">
+        <div class="map-container">
+            <div class="map">
+                <div class="no"></div>
+                <div class="yes"></div>
+            </div>
         </div>
-    </div>
-    <p>
-        Envoyez OUI ou NON au numéro suivant : <span id="number">undefined</span>
-    </p>
-    <p>
-        <img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=sms:" alt="" id="qr">
-    </p>
-    <p id="votes">
-        
-    </p>
-    <p>
-        Voters numbers : 
-        <ul id="numbers">
+        <p>
+            Envoyez OUI ou NON au numéro suivant : <span id="number">undefined</span>
+        </p>
+        <p>
+            <img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=sms:" alt="" id="qr">
+        </p>
+        <p id="votes">
             
-        </ul>
-    </p>
+        </p>
+        <p>
+            Voters numbers : 
+            <ul id="numbers">
+                
+            </ul>
+        </p>
 
+    </div>
     <script>
         var socket = io.connect(window.location.origin);
 
