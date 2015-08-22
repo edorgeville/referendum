@@ -4,11 +4,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Urbania : Referendum !</title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="stylesheets/app.css">
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
+    <div class="map-container">
+        <div class="map">
+            <div class="no"></div>
+            <div class="yes"></div>
+        </div>
+    </div>
     <p>
         Envoyez OUI ou NON au numéro suivant : <span id="number">undefined</span>
     </p>
@@ -33,6 +39,10 @@
             $('#votes').html("OUI " + votes.yes + " vs " + votes.no + " NON");
         });
 
+        socket.on('percentages', function(percentages){
+            $('.map .yes').css('width', percentages.yes + '%');
+        });
+
         socket.on('number', function(number){
             $('#number').html(number);
             $('#qr').attr('src', "http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=sms:" + number.replace('+', ''));
@@ -45,7 +55,7 @@
                 html += "<li>" + number + "</li>";
             });
             $('#numbers').html(html);
-        })
+        });
     </script>
 </body>
 </html>

@@ -83,18 +83,22 @@ function numberVoted(number){
 }
 
 function vote(number, answer){
+
+    votes[answer]++;
+
+    var percentages = getPercentages();
+
     if(number){
         if(answer == 'yes'){
-            sms.send(number, 'Vous avez voté pour l\'indépendence du Québec.');
+            sms.send(number, 'Vous avez voté oui. Score: OUI ' + percentages.yes + '% vs. NON ' + percentages.no + '%');
         }
         else if(answer == 'no'){
-            sms.send(number, 'Vous avez voté contre l\'indépendence du Québec.');
+            sms.send(number, 'Vous avez voté non. Score: OUI ' + percentages.yes + '% vs. NON ' + percentages.no + '%');
         }
         else{
             return 1;
         }
     }
-    votes[answer]++;
     if(number){
         numbers.push(number);
         censoredNumbers.push("xxx-xxx-" + number.substr(number.length - 4));
@@ -105,4 +109,12 @@ function vote(number, answer){
 
     io.emit('votes', votes);
     io.emit('numbers', censoredNumbers);
+    io.emit('percentages', percentages);
+}
+
+function getPercentages(){
+    return {
+        yes: votes.yes / (votes.yes + votes.no) * 100,
+        no: votes.no / (votes.yes + votes.no) * 100
+    }
 }
