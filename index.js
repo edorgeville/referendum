@@ -71,7 +71,8 @@ var io = require('socket.io')(server);
 io.on('connection', function (socket) {
     socket.emit('votes', votes);
     socket.emit('number', process.env.TWILIO_NUMBER);
-    io.emit('numbers', numbers);
+    socket.emit('numbers', numbers);
+    socket.emit('percentages', getPercentages());
 });
 
 
@@ -114,8 +115,16 @@ function vote(number, answer){
 }
 
 function getPercentages(){
+    var pY = (votes.yes / (votes.yes + votes.no) * 100).toFixed(0);
+    var pN = (votes.no / (votes.yes + votes.no) * 100).toFixed(0);
+    if (isNaN(pY)){
+        pY = 50;
+    }
+    if (isNaN(pN)){
+        pN = 50;
+    }
     return {
-        yes: (votes.yes / (votes.yes + votes.no) * 100).toFixed(0),
-        no: (votes.no / (votes.yes + votes.no) * 100).toFixed(0)
+        yes: pY,
+        no: pN
     }
 }
