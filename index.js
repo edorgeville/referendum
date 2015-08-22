@@ -88,6 +88,9 @@ function vote(number, answer){
 
     var percentages = getPercentages();
 
+    io.emit('votes', votes);
+    io.emit('percentages', percentages);
+
     if(number){
         if(answer == 'yes'){
             sms.send(number, 'Vous avez voté oui. Score: OUI ' + percentages.yes + '% vs. NON ' + percentages.no + '%');
@@ -107,14 +110,12 @@ function vote(number, answer){
         censoredNumbers.push("xxx-xxx-xxxx");
     }
 
-    io.emit('votes', votes);
     io.emit('numbers', censoredNumbers);
-    io.emit('percentages', percentages);
 }
 
 function getPercentages(){
     return {
-        yes: votes.yes / (votes.yes + votes.no) * 100,
-        no: votes.no / (votes.yes + votes.no) * 100
+        yes: (votes.yes / (votes.yes + votes.no) * 100).toFixed(0),
+        no: (votes.no / (votes.yes + votes.no) * 100).toFixed(0)
     }
 }
