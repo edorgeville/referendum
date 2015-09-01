@@ -12,16 +12,17 @@ socket.on('percentages', function(percentages){
     $('.column-yes .percentage').html(percentages.yes + '%');
 });
 
-socket.on('number', function(number){
-    $('#number').html(number);
-    $('#qr').attr('src', "http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=sms:" + number.replace('+', ''));
-});
+// socket.on('number', function(number){
+//     $('#number').html(number);
+//     $('#qr').attr('src', "http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=sms:" + number.replace('+', ''));
+// });
 
-socket.on('numbers', function(numbers){
-    var html = "";
-    numbers.reverse();
-    $.each(numbers, function(i, number){
-        html += "<li>" + number + "</li>";
-    });
-    $('#numbers').html(html);
-});
+
+// socket.on('numbers', function(numbers){
+//     var html = "";
+//     numbers.reverse();
+//     $.each(numbers, function(i, number){
+//         html += "<li>" + number + "</li>";
+//     });
+//     $('#numbers').html(html);
+// });

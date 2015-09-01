@@ -12,6 +12,12 @@ npm start
 - ```POST /sms``` : utilisée par Twilio pour les SMS reçus. Commandes possibles : ```OUI```, ```NON```, ```SCORE```
 - ```GET /triche/oui``` et ```GET /triche/non``` : pour faire de la fraude électorale  
 
+Exemples : 
+```
+ab -n 20 http://localhost:1337/triche/oui
+ab -n 20 http://urbania-referendum.herokuapp.com/triche/non
+```
+
 ### Développement Twilio local
 Créer un fichier ```.env``` et remplir de la façon suivante : 
 ```
