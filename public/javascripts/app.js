@@ -6,9 +6,10 @@ socket.on('votes', function(votes){
 });
 
 socket.on('percentages', function(percentages){
-    $('.map .yes').css('width', percentages.yes + '%');
-    $('.percentages .no').html(percentages.no + '%');
-    $('.percentages .yes').html(percentages.yes + '%');
+    $('.column-percentages .no').css('height', percentages.no + '%');
+    $('.column-percentages .no').html(percentages.no + '%');
+    $('.column-percentages .yes').css('height', percentages.yes + '%');
+    $('.column-percentages .yes').html(percentages.yes + '%');
 });
 
 // socket.on('number', function(number){
