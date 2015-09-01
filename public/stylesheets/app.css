@@ -18,9 +18,15 @@ body{
     left: 16px;
     bottom: 16px;
     right: 16px;
+    border: 10px solid #fff;
+    padding: 10px;
 }
 
-
+.header
+{
+    margin-bottom: 20px;
+    overflow: hidden;
+}
 
 .logo
 {
@@ -38,44 +44,58 @@ body{
 
 .content
 {
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    top: 90px;
+    left: 0;
+    right: 0;
     clear: both;
-    max-width: 1000px;
     margin: 0 auto;
-    
 }
 
 .title
 {
+    display: inline-block;
     text-align: center;
     font-size: 80px;
+    max-width: 1000px;
 }
 
 .columns
 {
+    display: inline-block;
     position: absolute;
     text-align: center;
     bottom: 0;
-    height: 50%;
+    height: 60%;
     left: 0;
     right: 0;
 }
 
+.column
+{
+    position: relative;
+    display: table;
+    height: 100%;
+}
+
 .column-yes
 {
-    width: 25%;
+    width: 30%;
     float: left;
 }
 
 .column-no
 {
-    width: 25%;
+    width: 30%;
     float: right;
 }
 
 .column-percentages
 {
     position: relative;
-    width: 50%;
+    width: 40%;
     height: 100%;
     float: left;
 }
@@ -83,20 +103,20 @@ body{
 .yes
 {
     position: absolute;
-    width: 25%;
+    width: 45%;
     bottom: 0;
     height: 100%;
-    left: 20%;
+    left: 2.5%;
     background-color: blue;
 }
 
 .no
 {
     position: absolute;
-    width: 25%;
+    width: 45%;
     bottom: 0;
     height: 100%;
-    right: 20%;
+    right: 2.5%;
     background-color: red;
 }
 
@@ -122,6 +142,20 @@ body{
 .yes .img
 {
     background-image: url(../images/poutine.png);
+}
+
+.result
+{
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    left: 0;
+}
+
+.answer
+{
+    display: table-cell;
+    vertical-align: middle;
 }
 
 ////////////////////////////////////////////////////
