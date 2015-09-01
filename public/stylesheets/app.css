@@ -39,6 +39,7 @@ body{
 .call-to-action
 {
     float:right;
+    font-size: 48px;
 }
 
 
@@ -78,18 +79,23 @@ body{
     position: relative;
     display: table;
     height: 100%;
+    background-position: top;
+    background-size: 80%;
+    background-repeat: no-repeat;
 }
 
 .column-yes
 {
     width: 30%;
     float: left;
+    background-image: url(../images/leaf_left.png);
 }
 
 .column-no
 {
     width: 30%;
     float: right;
+    background-image: url(../images/leaf_right.png);
 }
 
 .column-percentages
@@ -150,12 +156,14 @@ body{
     bottom: 20px;
     width: 100%;
     left: 0;
+    font-size: 72px;
 }
 
 .answer
 {
     display: table-cell;
     vertical-align: middle;
+    font-size: 150px;
 }
 
 ////////////////////////////////////////////////////
