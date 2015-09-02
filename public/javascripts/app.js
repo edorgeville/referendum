@@ -12,6 +12,13 @@ socket.on('percentages', function(percentages){
     $('.column-yes .percentage').html(percentages.yes + '%');
 });
 
+socket.on('animate', function(side){
+    $('.column .' + side + ' .img').addClass('spin');
+    setTimeout(function(){
+        $('.column .' + side + ' .img').removeClass('spin');
+    }, 1000);
+})
+
 // socket.on('number', function(number){
 //     $('#number').html(number);
 //     $('#qr').attr('src', "http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=sms:" + number.replace('+', ''));

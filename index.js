@@ -97,6 +97,7 @@ function vote(number, answer){
 
     io.emit('votes', votes);
     io.emit('percentages', percentages);
+    io.emit('animate', answer);
 
     if(number){
         if(answer == 'yes'){
