@@ -1,7 +1,9 @@
 var socket = io.connect(window.location.origin);
+window.votes = {};
 
 socket.on('votes', function(votes){
     console.log(votes);
+    window.votes = votes;
     $('#votes').html("OUI " + votes.yes + " vs " + votes.no + " NON");
 });
 
