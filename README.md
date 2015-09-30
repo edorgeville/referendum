@@ -1,5 +1,7 @@
-# Urbania : Referendum
+# Referendum
 ## Le grand moment est arrivé !
+
+![](public/images/result.jpg)
 
 ### Comment utiliser 
 ```
@@ -14,8 +16,8 @@ npm start
 
 Exemples : 
 ```
-ab -n 20 http://localhost:1337/triche/oui
-ab -n 20 http://urbania-referendum.herokuapp.com/triche/non
+ab -n 18 http://localhost:1337/triche/oui
+ab -n 25 http://localhost:1337/triche/non
 ```
 
 ### Développement Twilio local
