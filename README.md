@@ -37,7 +37,7 @@ Utiliser l'URL retournée pour Twilio
 
 ### Déploiement sur Heroku
 ```
-heroku git:remote -a urbania-referendum -r production
+heroku git:remote -a referendum -r production
 git push production master
 heroku config:set TWILIO_SID=xxxxxxxxxxxxxxx TWILIO_AUTH_TOKEN=xxxxxxxxxxxxxx TWILIO_NUMBER=+15141231234 -r production
 heroku open
